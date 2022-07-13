@@ -207,7 +207,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <summary>
         /// Builds a custom request.
         /// </summary>
-        /// <param name="requestJson">Json <see cref="System.String"/> of a custom request.</param>
+        /// <param name="requestJson">Json <see cref="string"/> of a custom request.</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="requestJson"/> is invalid.</exception>
         /// <returns>Returns the <see cref="IntPtr"/> handle to a custom request.</returns>
         public static async Task<IntPtr> BuildCustomRequest(
@@ -432,9 +432,9 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="submitterDid">(Optional) DID of the read request sender. If not provided then the default Libindy DID will be used.</param>
         /// <param name="data">(Optional) specifies conditions for getting a specific TAA. Contains 3 mutually exclusive optional fields:
         /// {
-        ///     hash: Optional<str> - hash of requested TAA,
-        ///     version: Optional<str> - version of requested TAA.
-        ///     imestamp: Optional<i64> - ledger will return TAA valid at requested timestamp.
+        ///     hash: Optional - hash of requested TAA,
+        ///     version: Optional - version of requested TAA.
+        ///     imestamp: Optional - ledger will return TAA valid at requested timestamp.
         /// }
         /// Null data or empty JSON are acceptable here. In this case, ledger will return the latest version of the TAA.
         /// </param>

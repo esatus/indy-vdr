@@ -17,7 +17,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="version">TAA version.</param>
         /// <param name="taaDigest">TAA digest.</param>
         /// <exception cref="IndyVdrException">Throws if parameters or the combination of them are invalid.</exception>
-        /// <returns>The transaction author agreement acceptance as json <see cref="System.String"/>.</returns>
+        /// <returns>The transaction author agreement acceptance as json <see cref="string"/>.</returns>
         public static async Task<string> PrepareTxnAuthorAgreementAcceptanceAsync(
             string accMechType,
             ulong time,
@@ -66,7 +66,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="requestHandle">Handle of the request object.</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="requestHandle"/> is invalid.</exception>
-        /// <returns>Body of the request as json <see cref="System.String"/>.</returns>
+        /// <returns>Body of the request as json <see cref="string"/>.</returns>
         public static async Task<string> RequestGetBodyAsync(
             IntPtr requestHandle)
         {

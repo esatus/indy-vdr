@@ -55,7 +55,7 @@ namespace indy_vdr_dotnet.utils
             Debug.Assert(_taskCompletionSources.ContainsKey(callbackId), string.Format("No task completion source is currently registered for the callback with the id '{0}'.", callbackId));
 
             object taskCompletionSource = _taskCompletionSources[callbackId];
-            _taskCompletionSources.Remove(callbackId);
+            _ = _taskCompletionSources.Remove(callbackId);
             TaskCompletionSource<T> result = taskCompletionSource as TaskCompletionSource<T>;
 
             Debug.Assert(result != null, string.Format("No task completion source of the specified type is registered for the callback with the id '{0}'.", callbackId));

@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <RootNamespace>indy_vdr_dotnet</RootNamespace>
 	  <AssemblyName>Hyperledger.Indy-VDR</AssemblyName>
-	  <RootNamespace>Hyperledger.Indy</RootNamespace>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Version>0.4.0-alpha</Version>
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

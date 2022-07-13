@@ -51,11 +51,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="poolHandle">Handle of pool object.</param>
         /// <exception cref="IndyVdrException">Throws if provided <paramref name="poolHandle"/> is invalid.</exception>
-        /// <returns><cTrue/c> if pool could be refreshed, <c>False</c> if not.</returns>
+        /// <returns><cTrue</c> if pool could be refreshed, <c>False</c> if not.</returns>
         public static async Task<bool> RefreshPoolAsync(
             IntPtr poolHandle)
         {
-            TaskCompletionSource<bool> taskCompletionSource = new TaskCompletionSource<bool>();
+            TaskCompletionSource<bool> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_refresh(
@@ -97,7 +97,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         public static async Task<string> GetPoolStatusAsync(
             IntPtr poolHandle)
         {
-            TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_get_status(
@@ -135,11 +135,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// Gets information for all current transactions of a provided pool.</summary>
         /// <param name="poolHandle">Handle of pool object.</param>
         /// <exception cref="IndyVdrException">Throws if provided <paramref name="poolHandle"/> is invalid.</exception>
-        /// <returns>Returns a list of all transactions of the pool as json <see cref="System.String"/>.</returns>
+        /// <returns>Returns a list of all transactions of the pool as json <see cref="string"/>.</returns>
         public static async Task<string> GetPoolTransactionsAsync(
             IntPtr poolHandle)
         {
-            TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_get_transactions(
@@ -157,7 +157,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             // It only concatentates the transaction objects with a '\n'
             // instead of a ','.
             string transactionsJson = await taskCompletionSource.Task;
-            return $"[{transactionsJson.Replace("}\n{","},{")}]";
+            return $"[{transactionsJson.Replace("}\n{", "},{")}]";
         }
         private static void PoolGetTransactionsCallbackMethod(long callbackId, int errorCode, string transactions)
         {
@@ -180,11 +180,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="poolHandle">Handle of pool object.</param>
         /// <exception cref="IndyVdrException">Throws if provided <paramref name="poolHandle"/> is invalid.</exception>
-        /// <returns>All pool verifiers represented as json <see cref="System.String"/>.</returns>
+        /// <returns>All pool verifiers represented as json <see cref="string"/>.</returns>
         public static async Task<string> GetPoolVerifiersAsync(
             IntPtr poolHandle)
         {
-            TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_get_verifiers(
@@ -228,7 +228,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="nodeAliases">All nodes that are requested to perform the action.</param>
         /// <param name="timeout">Seconds until timeout (Default: <c>-1</c> for no timeout).</param>
         /// <exception cref="IndyVdrException">Throws if any parameters are invalid.</exception>
-        /// <returns><see cref="System.String"/> with the node aliases as keys and the node's responses as values within a dictionary in json format.</returns>
+        /// <returns><see cref="string"/> with the node aliases as keys and the node's responses as values within a dictionary in json format.</returns>
         public static async Task<string> SubmitPoolActionAsync(
             IntPtr poolHandle,
             IntPtr requestHandle,
@@ -241,7 +241,7 @@ namespace indy_vdr_dotnet.libindy_vdr
                 nodesJson = JsonConvert.SerializeObject(nodeAliases);
             }
 
-            TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_submit_action(
@@ -282,12 +282,12 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="poolHandle">Handle of the pool object.</param>
         /// <param name="requestHandle">Handle of the prepared request object.</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="poolHandle"/> or <paramref name="requestHandle"/> is invalid.</exception>
-        /// <returns>Reply from the pool as json <see cref="System.String"/>.</returns>
+        /// <returns>Reply from the pool as json <see cref="string"/>.</returns>
         public static async Task<string> SubmitPoolRequestAsync(
             IntPtr poolHandle,
             IntPtr requestHandle)
         {
-            TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> taskCompletionSource = new();
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_pool_submit_request(
