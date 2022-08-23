@@ -258,7 +258,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             IntPtr testRequestHandle = await LedgerApi.BuildGetTxnRequestAsync(1, 1);
             string testtestRequestBody = await RequestApi.RequestGetBodyAsync(testRequestHandle);
             JObject testtestRequestBodyJObj = JObject.Parse(testtestRequestBody);
-            string testMultiSig = "{\"signature\":\"sig\"}";
+            byte[] testMultiSig = Encoding.UTF8.GetBytes("{\"signature\":\"sig\"}");
 
             //Act
             await RequestApi.RequestSetSigantureAsync(
