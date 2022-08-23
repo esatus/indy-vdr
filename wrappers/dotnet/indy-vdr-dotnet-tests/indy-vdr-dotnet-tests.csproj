@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+	<TargetFramework>net5.0</TargetFramework>
     <RootNamespace>indy_vdr_dotnet_tests</RootNamespace>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ew_builder" />
+    <None Remove="Resources\genesis_builder" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ew_builder" />
+    <EmbeddedResource Include="Resources\genesis_builder" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using static indy_vdr_dotnet.models.Structures;
 
@@ -32,7 +37,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string verion,
             string amlContext = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_acceptance_mechanisms_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(aml),
@@ -65,7 +70,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string version = null,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_acceptance_mechanisms_request(
                 FfiStr.Create(submitterDid),
                 timestamp,
@@ -100,7 +105,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string raw = null,
             string enc = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_attrib_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(targetDid),
@@ -133,16 +138,16 @@ namespace indy_vdr_dotnet.libindy_vdr
         public static async Task<IntPtr> BuildGetAttributeRequest(
             string targetDid,
             string submitterDid = null,
-            string hash = null,
             string raw = null,
+            string hash = null,
             string enc = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_attrib_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(targetDid),
-                FfiStr.Create(hash),
                 FfiStr.Create(raw),
+                FfiStr.Create(hash),
                 FfiStr.Create(enc),
                 ref requestHandle);
 
@@ -188,7 +193,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string submitterDid,
             string credDef)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_cred_def_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(credDef),
@@ -213,7 +218,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         public static async Task<IntPtr> BuildCustomRequest(
             string requestJson)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_custom_request(
                 FfiStr.Create(requestJson),
                 ref requestHandle);
@@ -238,7 +243,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         public static async Task<IntPtr> BuildDisableAllTxnAuthorAgreementsRequest(
             string submitterDid)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_disable_all_txn_author_agreements_request(
                 FfiStr.Create(submitterDid),
                 ref requestHandle);
@@ -262,7 +267,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string credDefDid,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_cred_def_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(credDefDid),
@@ -287,7 +292,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string targetDid,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_nym_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(targetDid),
@@ -315,7 +320,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string revocRegId,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_revoc_reg_def_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(revocRegId),
@@ -345,7 +350,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             long timestamp,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_revoc_reg_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(revocRegId),
@@ -380,7 +385,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             long fromTs = -1,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_revoc_reg_delta_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(revocRegId),
@@ -408,7 +413,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string schemaId,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_schema_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(schemaId),
@@ -444,7 +449,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string submitterDid = null,
             string data = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_txn_author_agreement_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(data),
@@ -472,7 +477,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             int seqNo,
             string submitterDid = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_txn_request(
                 FfiStr.Create(submitterDid),
                 ledgerType,
@@ -496,7 +501,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         public static async Task<IntPtr> BuildGetValidatorInfoRequestAsync(
             string submitterDid)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_validator_info_request(
                 FfiStr.Create(submitterDid),
                 ref requestHandle);
@@ -533,7 +538,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string alias = null,
             string role = null)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_nym_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(dest),
@@ -584,7 +589,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string submitterDid,
             string revocRegDefJson)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_revoc_reg_def_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(revocRegDefJson),
@@ -628,7 +633,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string revocRegDefType,
             string revocRegEntryJson)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_revoc_reg_entry_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(revocRegDefId),
@@ -664,7 +669,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             string submitterDid,
             string schemaJson)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_schema_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(schemaJson),
@@ -708,7 +713,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             long ratificationTs,
             long retirementTs)
         {
-            IntPtr requestHandle = new();
+            IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_txn_author_agreement_request(
                 FfiStr.Create(submitterDid),
                 FfiStr.Create(text),
@@ -725,5 +730,105 @@ namespace indy_vdr_dotnet.libindy_vdr
 
             return requestHandle;
         }
+
+        #region Parse methods
+        public static async Task<string> ParseGetSchemaResponse(string response)
+        {
+            var responseJson = JObject.Parse(response);
+            var seqNo = responseJson["result"]["seqNo"];
+
+            var dest = responseJson["result"]["dest"];
+            var name = responseJson["result"]["data"]["name"].ToString();
+            var version = responseJson["result"]["data"]["version"].ToString();
+            var ver = version; // TODO ??? check if ver is version
+            var attrNames = responseJson["result"]["data"]["attr_names"].Values<string>().ToList();
+
+            string id = dest + ":" + "2" + ":" + name + ":" + version;
+
+            return JsonConvert.SerializeObject(new
+            {
+                ver,
+                id,
+                name,
+                version,
+                attrNames,
+                seqNo
+            });
+        }
+
+        public static async Task<string> ParseGetCredDefResponse(string response)
+        {            
+            var credDefResponseJson = JObject.Parse(response);
+
+            var tag = credDefResponseJson["result"]["tag"];
+            var type = credDefResponseJson["result"]["signature_type"];
+            var origin = credDefResponseJson["result"]["origin"];
+            var ref_value = credDefResponseJson["result"]["ref"];
+
+            var id = origin + ":" + "3" + ":" + type + ":" + ref_value + ":" + tag;
+
+            return JsonConvert.SerializeObject(new
+            {
+                ver = "1.0", // TODO ??? check ver
+                id,
+                ref_value,
+                type,
+                tag,
+                value = new
+                {
+                    primary = credDefResponseJson["result"]["data"]["primary"],
+                    revocation = credDefResponseJson["result"]["data"]["revocation"]
+                }
+            });
+        }
+
+        public static async Task<string> ParseGetRevocRegDefResponseAsyn(string response)
+        {
+            var responseJson = JObject.Parse(response);
+
+            return JsonConvert.SerializeObject(new
+            {
+                ver = "1.0", // TODO ??? check version
+                id = responseJson["result"]["id"],
+                revocDefType = responseJson["result"]["data"]["revocDefType"],
+                tag = responseJson["result"]["data"]["tag"],
+                credDefId = responseJson["result"]["data"]["credDefId"],
+                value = new
+                {
+                    issuanceType = responseJson["result"]["data"]["value"]["issuanceType"],
+                    maxCredNum = responseJson["result"]["data"]["value"]["maxCredNum"],
+                    publicKeys = new
+                    {
+                        accumKey = new
+                        {
+                            z = responseJson["result"]["data"]["value"]["publicKeys"]["accumKey"]["z"]
+                        }
+                    }
+                },
+                tailsHash = responseJson["result"]["data"]["value"]["tailsHash"],
+                tailsLocation = responseJson["result"]["data"]["value"]["tailsLocation"]
+            });
+        }
+
+        public static async Task<string> ParseGetRevocRegDeltaResponseAsyn(string response)
+        {
+            return ""; // TODO ??? 
+        }
+
+        public static async Task<string> ParseGetRevocRegResponseAsync(string response)
+        {
+            var responseJson = JObject.Parse(response);
+
+            return JsonConvert.SerializeObject(new
+            {
+                ver = "1.0", // TODO ??? check version
+                value = new
+                {
+                    accum = responseJson["result"]["data"]["value"]["accum"]
+                }
+            });
+        }
+
+        #endregion
     }
 }
