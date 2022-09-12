@@ -6,6 +6,8 @@ namespace indy_vdr_dotnet
 {
     public class IndyVdrException : Exception
     {
+        public ErrorCode errorCode;
+
         public IndyVdrException(string message) : base(message)
         {
         }
@@ -14,20 +16,19 @@ namespace indy_vdr_dotnet
         {
         }
 
+        public IndyVdrException(string message, ErrorCode code) : base(message)
+        {
+            errorCode = code;
+        }
+
         public static IndyVdrException FromSdkError(string message)
         {
             string msg = JsonConvert.DeserializeObject<Dictionary<string, string>>(message)["message"];
-            string errorCode = JsonConvert.DeserializeObject<Dictionary<string, string>>(message)["code"];
-            string extra = JsonConvert.DeserializeObject<Dictionary<string, string>>(message)["extra"];
-            if (int.TryParse(errorCode, out int errCodeInt))
-            {
-                return new IndyVdrException(
-                    $"'{((ErrorCode)errCodeInt).ToErrorCodeString()}' error occured with ErrorCode '{errorCode}' and extra: '{extra}': {msg}.");
-            }
-            else
-            {
-                return new IndyVdrException("An unknown error code was received.");
-            }
+            string errCode = JsonConvert.DeserializeObject<Dictionary<string, string>>(message)["code"];
+            return int.TryParse(errCode, out int errCodeInt)
+                ? new IndyVdrException(
+                    $"'{((ErrorCode)errCodeInt).ToErrorCodeString()}' error occured with ErrorCode '{errCode}' : {msg}.", (ErrorCode)errCodeInt)
+                : new IndyVdrException("An unknown error code was received.", (ErrorCode)errCodeInt);
         }
     }
 }

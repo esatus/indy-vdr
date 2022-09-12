@@ -27,18 +27,26 @@ namespace indy_vdr_dotnet.models
         public unsafe struct ByteBuffer
         {
             public long len;
-            public byte* value;
+            public IntPtr value;
 
             public static ByteBuffer Create(string json)
             {
-                UTF8Encoding decoder = new UTF8Encoding(true, true);
-                byte[] bytes = new byte[json.Length];
-                decoder.GetBytes(json, 0, json.Length, bytes, 0);
                 ByteBuffer buffer = new ByteBuffer();
-                buffer.len = (uint)json.Length;
-                fixed (byte* bytebuffer_p = &bytes[0])
+                if (!string.IsNullOrEmpty(json))
                 {
-                    buffer.value = bytebuffer_p;
+                    UTF8Encoding decoder = new UTF8Encoding(true, true);
+                    byte[] bytes = new byte[json.Length];
+                    _ = decoder.GetBytes(json, 0, json.Length, bytes, 0);
+                    buffer.len = json.Length;
+                    fixed (byte* bytebuffer_p = &bytes[0])
+                    {
+                        buffer.value = new IntPtr(bytebuffer_p);
+                    }
+                }
+                else
+                {
+                    buffer.len = 0;
+                    buffer.value = new IntPtr();
                 }
                 return buffer;
             }
@@ -46,10 +54,18 @@ namespace indy_vdr_dotnet.models
             public static ByteBuffer Create(byte[] bytes)
             {
                 ByteBuffer buffer = new ByteBuffer();
-                buffer.len = bytes.Length;
-                fixed (byte* bytebuffer_p = &bytes[0])
+                buffer.len = bytes != null ? bytes.Length : 0;
+
+                if (buffer.len > 0 && bytes != null)
                 {
-                    buffer.value = bytebuffer_p;
+                    fixed (byte* bytebuffer_p = &bytes[0])
+                    {
+                        buffer.value = new IntPtr(bytebuffer_p);
+                    }
+                }
+                else
+                {
+                    buffer.value = new IntPtr();
                 }
 
                 return buffer;
