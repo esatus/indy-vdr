@@ -9,7 +9,7 @@ using static indy_vdr_dotnet.models.Structures;
 
 namespace indy_vdr_dotnet.libindy_vdr
 {
-    public class PoolApi
+    public static class PoolApi
     {
         /// <summary>
         /// Creates and initializes a new pool.
