@@ -740,7 +740,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             var dest = responseJson["result"]["dest"];
             var name = responseJson["result"]["data"]["name"].ToString();
             var version = responseJson["result"]["data"]["version"].ToString();
-            var ver = version; // TODO ??? check if ver is version
+            var ver = version;
             var attrNames = responseJson["result"]["data"]["attr_names"].Values<string>().ToList();
 
             string id = dest + ":" + "2" + ":" + name + ":" + version;
@@ -769,7 +769,7 @@ namespace indy_vdr_dotnet.libindy_vdr
 
             return JsonConvert.SerializeObject(new
             {
-                ver = "1.0", // TODO ??? check ver
+                ver = "1.0",
                 id,
                 ref_value,
                 type,
@@ -782,13 +782,13 @@ namespace indy_vdr_dotnet.libindy_vdr
             });
         }
 
-        public static async Task<string> ParseGetRevocRegDefResponseAsyn(string response)
+        public static async Task<string> ParseGetRevocRegDefResponseAsync(string response)
         {
             var responseJson = JObject.Parse(response);
 
             return JsonConvert.SerializeObject(new
             {
-                ver = "1.0", // TODO ??? check version
+                ver = "1.0",
                 id = responseJson["result"]["id"],
                 revocDefType = responseJson["result"]["data"]["revocDefType"],
                 tag = responseJson["result"]["data"]["tag"],
@@ -810,18 +810,13 @@ namespace indy_vdr_dotnet.libindy_vdr
             });
         }
 
-        public static async Task<string> ParseGetRevocRegDeltaResponseAsyn(string response)
-        {
-            return ""; // TODO ??? 
-        }
-
         public static async Task<string> ParseGetRevocRegResponseAsync(string response)
         {
             var responseJson = JObject.Parse(response);
 
             return JsonConvert.SerializeObject(new
             {
-                ver = "1.0", // TODO ??? check version
+                ver = "1.0",
                 value = new
                 {
                     accum = responseJson["result"]["data"]["value"]["accum"]

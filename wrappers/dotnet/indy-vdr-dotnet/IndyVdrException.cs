@@ -6,8 +6,7 @@ namespace indy_vdr_dotnet
 {
     public class IndyVdrException : Exception
     {
-        public ErrorCode errorCode;
-
+        public ErrorCode ErrorCode { get; set; }
         public IndyVdrException(string message) : base(message)
         {
         }
@@ -18,7 +17,7 @@ namespace indy_vdr_dotnet
 
         public IndyVdrException(string message, ErrorCode code) : base(message)
         {
-            errorCode = code;
+            ErrorCode = code;
         }
 
         public static IndyVdrException FromSdkError(string message)

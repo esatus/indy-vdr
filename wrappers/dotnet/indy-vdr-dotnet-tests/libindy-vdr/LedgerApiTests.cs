@@ -807,7 +807,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
                 testSubmitterDid);
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
             //Act
-            string res = await LedgerApi.ParseGetRevocRegDefResponseAsyn(response);
+            string res = await LedgerApi.ParseGetRevocRegDefResponseAsync(response);
 
             //Assert
             var resJObj = JObject.Parse(res);
@@ -823,36 +823,6 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             revocDefType.Should().NotBeNullOrEmpty();
             issuanceType.Should().NotBeNullOrEmpty();
             z.Should().NotBeNullOrEmpty();
-        }
-
-        [Test, TestCase(TestName = "ParseGetRevocRegDeltaResponse takes a response JSON and parses it to a schema JSON.")]
-        public async Task ParseGetRevocRegDeltaResponseWorks()
-        {
-            ////Arrange
-            //IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
-            //string testRevocRegId = "VH5KLUSKxFAuS9mbXQEJCK:4:VH5KLUSKxFAuS9mbXQEJCK:3:CL:53251:postMan-Shoes:CL_ACCUM:94701d2f-62ab-442b-bbe7-96f366614bc6";
-            //long testFromTs = 1;
-            //long testToTs = 1;
-            //string testSubmitterDid = "LibindyDid111111111111";
-
-            ////Act
-            //IntPtr testRequestHandle = await LedgerApi.BuildGetRevocRegDeltaRequestAsync(
-            //    testRevocRegId,
-            //    testToTs,
-            //    testFromTs,
-            //    testSubmitterDid);
-            //string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
-            ////Act
-            //string res = await LedgerApi.ParseGetRevocRegDeltaResponseAsyn(response);
-
-            ////Assert
-            //var resJObj = JObject.Parse(res);
-
-            //string version = resJObj["version"].ToString();
-            //string id = resJObj["id"].ToString();
-
-            //version.Should().NotBeNullOrEmpty();
-            //id.Should().NotBeNullOrEmpty();
         }
 
         [Test, TestCase(TestName = "ParseGetRevocRegResponse takes a response JSON and parses it to a schema JSON.")]
