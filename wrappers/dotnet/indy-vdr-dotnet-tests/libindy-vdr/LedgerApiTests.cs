@@ -756,7 +756,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             IntPtr testRequestHandle = await LedgerApi.BuildGetSchemaRequestAsync("9vBvpoNHmqiDu4pAUVVue7:2:Boarding Pass:1.0");
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
             //Act
-            string res = await LedgerApi.ParseGetSchemaResponse(response);
+            string res = LedgerApi.ParseGetSchemaResponse(response);
 
             //Assert
             var resJObj = JObject.Parse(res);
@@ -781,7 +781,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
 
             //Act
-            string res = await LedgerApi.ParseGetCredDefResponse(response);
+            string res = LedgerApi.ParseGetCredDefResponse(response);
 
             //Assert
             var resJObj = JObject.Parse(res);
@@ -807,7 +807,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
                 testSubmitterDid);
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
             //Act
-            string res = await LedgerApi.ParseGetRevocRegDefResponseAsync(response);
+            string res = LedgerApi.ParseGetRevocRegDefResponseAsync(response);
 
             //Assert
             var resJObj = JObject.Parse(res);
@@ -841,7 +841,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
                 testSubmitterDid);
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
             //Act
-            string res = await LedgerApi.ParseGetRevocRegResponseAsync(response);
+            string res = LedgerApi.ParseGetRevocRegResponseAsync(response);
 
             //Assert
             var resJObj = JObject.Parse(res);

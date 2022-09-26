@@ -732,7 +732,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         #region Parse methods
-        public static async Task<string> ParseGetSchemaResponse(string response)
+        public static string ParseGetSchemaResponse(string response)
         {
             var responseJson = JObject.Parse(response);
             var seqNo = responseJson["result"]["seqNo"];
@@ -756,7 +756,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             });
         }
 
-        public static async Task<string> ParseGetCredDefResponse(string response)
+        public static string ParseGetCredDefResponse(string response)
         {            
             var credDefResponseJson = JObject.Parse(response);
 
@@ -782,7 +782,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             });
         }
 
-        public static async Task<string> ParseGetRevocRegDefResponseAsync(string response)
+        public static string ParseGetRevocRegDefResponseAsync(string response)
         {
             var responseJson = JObject.Parse(response);
 
@@ -810,7 +810,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             });
         }
 
-        public static async Task<string> ParseGetRevocRegResponseAsync(string response)
+        public static string ParseGetRevocRegResponseAsync(string response)
         {
             var responseJson = JObject.Parse(response);
 
