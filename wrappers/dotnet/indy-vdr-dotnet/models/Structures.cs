@@ -34,12 +34,12 @@ namespace indy_vdr_dotnet.models
                 ByteBuffer buffer = new ByteBuffer();
                 if (!string.IsNullOrEmpty(json))
                 {
-                    UTF8Encoding decoder = new UTF8Encoding(true, true);
-                    byte[] bytes = new byte[json.Length];
+                UTF8Encoding decoder = new UTF8Encoding(true, true);
+                byte[] bytes = new byte[json.Length];
                     _ = decoder.GetBytes(json, 0, json.Length, bytes, 0);
                     buffer.len = json.Length;
-                    fixed (byte* bytebuffer_p = &bytes[0])
-                    {
+                fixed (byte* bytebuffer_p = &bytes[0])
+                {
                         buffer.value = new IntPtr(bytebuffer_p);
                     }
                 }
@@ -58,8 +58,8 @@ namespace indy_vdr_dotnet.models
 
                 if (buffer.len > 0 && bytes != null)
                 {
-                    fixed (byte* bytebuffer_p = &bytes[0])
-                    {
+                fixed (byte* bytebuffer_p = &bytes[0])
+                {
                         buffer.value = new IntPtr(bytebuffer_p);
                     }
                 }
