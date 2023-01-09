@@ -17,7 +17,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="version">TAA version.</param>
         /// <param name="taaDigest">TAA digest.</param>
         /// <exception cref="IndyVdrException">Throws if parameters or the combination of them are invalid.</exception>
-        /// <returns>The transaction author agreement acceptance as json <see cref="System.String"/>.</returns>
+        /// <returns>The transaction author agreement acceptance as JSON.</returns>
         public static async Task<string> PrepareTxnAuthorAgreementAcceptanceAsync(
             string accMechType,
             ulong time,
@@ -66,7 +66,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="requestHandle">Handle of the request object.</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="requestHandle"/> is invalid.</exception>
-        /// <returns>Body of the request as json <see cref="System.String"/>.</returns>
+        /// <returns>Body of the request as JSON.</returns>
         public static async Task<string> RequestGetBodyAsync(
             IntPtr requestHandle)
         {
@@ -117,12 +117,16 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <remarks>
         /// Note: Both Transaction Author and Endorser must sign the output request.
         /// More about Transaction Endorser:
-        ///    <c>https://github.com/hyperledger/indy-node/blob/master/design/transaction_endorser.md</c>, 
-        ///    <c>https://github.com/hyperledger/indy-sdk/blob/master/docs/configuration.md</c>
+        /// <para>
+        ///    <seealso href="https://github.com/hyperledger/indy-node/blob/master/design/transaction_endorser.md">https://github.com/hyperledger/indy-node/blob/master/design/transaction_endorser.md</seealso>,
+        ///</para>
+        ///<para>
+        ///    <seealso href="https://github.com/hyperledger/indy-sdk/blob/master/docs/configuration.md">https://github.com/hyperledger/indy-sdk/blob/master/docs/configuration.md</seealso>
+        /// </para>
         /// </remarks>
         /// <param name="requestHandle">Handle of a prepared request object.</param>
         /// <param name="endorser">DID of the Endorser that will submit the transaction. The Endorser's DID must be present on the ledger.</param>
-        /// <exception cref="IndyVdrException">Throws if <paramref name="requestHandle"/> ir <paramref name="endorser"/> are invalid.</exception>
+        /// <exception cref="IndyVdrException">Throws if <paramref name="requestHandle"/> or <paramref name="endorser"/> are invalid.</exception>
         public static async Task RequestSetEndorserAsync(
             IntPtr requestHandle,
             string endorser)
@@ -188,7 +192,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="requestHandle">Handle of a prepared request object.</param>
         /// <param name="agreementAcceptance">TAA to set.</param>
-        /// <exception cref="IndyVdrException">Throws if any parameter is invalid.</exception>
+        /// <exception cref="IndyVdrException">Throws if <paramref name="requestHandle"/> or <paramref name="agreementAcceptance"/> is invalid.</exception>
         public static async Task RequestSetTxnAuthorAgreementAcceptanceAsync(
             IntPtr requestHandle,
             string agreementAcceptance)

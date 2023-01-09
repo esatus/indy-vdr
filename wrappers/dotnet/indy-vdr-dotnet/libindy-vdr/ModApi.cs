@@ -8,8 +8,8 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <summary>
         /// Sets a new configuration to the pool.
         /// </summary>
-        /// <param name="config">Pool configuration as json string:
-        /// <c>
+        /// <param name="config">Pool configuration as JSON string:
+        /// <code>
         ///     {
         ///         "protocol_version": [String],
 	    ///         "freshness_threshold": [Integer],
@@ -20,10 +20,10 @@ namespace indy_vdr_dotnet.libindy_vdr
 	    ///         "request_read_nodes": [Integer],
 	    ///         "socks_proxy": [String - proxy Url]
         ///     }
-        /// </c>
+        /// </code>
         /// </param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="config"/> is invalid.</exception>
-        /// <returns>Error code of method (0 if success).</returns>
+        /// <returns><see cref="ErrorCode"/> value of method (<c>0</c> if success).</returns>
         public static async Task<int> SetConfigAsync(
             string config)
         {
@@ -42,7 +42,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// Sets the default logger for pool methods.
         /// </summary>
         /// <exception cref="IndyVdrException">Throws if setting the default logger was not possible.</exception>
-        /// <returns>Error code of method (0 if success).</returns>
+        /// <returns><see cref="ErrorCode"/> value of method (<c>0</c> if success).</returns>
         public static async Task<int> SetDefaultLoggerAsync()
         {
             int errorCode = NativeMethods.indy_vdr_set_default_logger();
@@ -60,7 +60,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="version">Version of protocol (Currently supported: 1 and 2)</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="version"/> is invalid.</exception>
-        /// <returns>Error code of method (0 if success).</returns>
+        /// <returns><see cref="ErrorCode"/> value of method (<c>0</c> if success).</returns>
         public static async Task<int> SetProtocolVersionAsync(long version)
         {
             int errorCode = NativeMethods.indy_vdr_set_protocol_version(version);
@@ -78,7 +78,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// </summary>
         /// <param name="socks_proxy">Address of socks proxy (Format: <c>URL:Port</c>)</param>
         /// <exception cref="IndyVdrException">Throws if <paramref name="socks_proxy"/> is invalid.</exception>
-        /// <returns>Error code of method (0 if success).</returns>
+        /// <returns><see cref="ErrorCode"/> value of method (<c>0</c> if success).</returns>
         public static async Task<int> SetSocksProxyAsync(string socks_proxy)
         {
             int errorCode = NativeMethods.indy_vdr_set_socks_proxy(FfiStr.Create(socks_proxy));
@@ -93,7 +93,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <summary>
         /// Gets current vdr version.
         /// </summary>
-        /// <returns>Currently used version of vdr as <see cref="System.String"/> (Format: <c>x.x.x</c>).</returns>
+        /// <returns>Currently used version of vdr (Format: <c>x.x.x</c>).</returns>
         public static async Task<string> GetVersionAsync()
         {
             return await Task.FromResult<string>(NativeMethods.indy_vdr_version());

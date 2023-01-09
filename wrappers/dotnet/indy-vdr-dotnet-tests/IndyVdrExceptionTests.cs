@@ -57,7 +57,6 @@ namespace indy_vdr_dotnet_tests
 
             //Assert
             actual.Should().Be(expected);
-            Console.WriteLine(testException.Message);
             return Task.CompletedTask;
         }
     }

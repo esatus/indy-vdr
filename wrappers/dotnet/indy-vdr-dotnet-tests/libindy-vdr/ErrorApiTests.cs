@@ -8,7 +8,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
     public class ErrorApiTests
     {
         #region Tests for GetCurrentError
-        [Test, TestCase(TestName = "GetCurrentErrorAsync returns the json of an empty error.")]
+        [Test, TestCase(TestName = "GetCurrentErrorAsync returns the JSON of an empty error.")]
         public async Task GetCurrentError()
         {
             //Arrange

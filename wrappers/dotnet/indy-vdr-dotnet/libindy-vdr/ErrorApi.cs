@@ -5,9 +5,9 @@ namespace indy_vdr_dotnet.libindy_vdr
     public static class ErrorApi
     {
         /// <summary>
-        /// Returns json <see cref="System.String"/> of the last thrown native error.
+        /// Returns JSON of the last thrown native error.
         /// </summary>
-        /// <returns>Error json in form of <c>{"code":[int],"message":[string]}</c>.</returns>
+        /// <returns>Error JSON in form of <c>{"code":[int],"message":[string],"extra":[string]}</c>.</returns>
         public static Task<string> GetCurrentErrorAsync()
         {
             string result = "";
