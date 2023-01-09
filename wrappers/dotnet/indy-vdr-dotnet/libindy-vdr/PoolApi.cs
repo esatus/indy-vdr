@@ -171,7 +171,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             // It only concatentates the transaction objects with a '\n'
             // instead of a ','.
             string transactionsJson = await taskCompletionSource.Task;
-            return $"[{transactionsJson.Replace("}\n{","},{")}]";
+            return $"[{transactionsJson.Replace("}\n{", "},{")}]";
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace indy_vdr_dotnet.libindy_vdr
 
             return await taskCompletionSource.Task;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using static indy_vdr_dotnet.models.Structures;
@@ -124,7 +123,7 @@ namespace indy_vdr_dotnet.libindy_vdr
 
             return requestHandle;
         }
-        
+
         /// <summary>
         /// Builds a <c>GET_ATTRIB</c> request.
         /// </summary>
@@ -744,14 +743,14 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <returns>JSON of schema.</returns>
         public static string ParseGetSchemaResponse(string response)
         {
-            var responseJson = JObject.Parse(response);
-            var seqNo = responseJson["result"]["seqNo"];
+            JObject responseJson = JObject.Parse(response);
+            JToken seqNo = responseJson["result"]["seqNo"];
 
-            var dest = responseJson["result"]["dest"];
-            var name = responseJson["result"]["data"]["name"].ToString();
-            var version = responseJson["result"]["data"]["version"].ToString();
-            var ver = version;
-            var attrNames = responseJson["result"]["data"]["attr_names"].Values<string>().ToList();
+            JToken dest = responseJson["result"]["dest"];
+            string name = responseJson["result"]["data"]["name"].ToString();
+            string version = responseJson["result"]["data"]["version"].ToString();
+            string ver = version;
+            List<string> attrNames = responseJson["result"]["data"]["attr_names"].Values<string>().ToList();
 
             string id = dest + ":" + "2" + ":" + name + ":" + version;
 
@@ -772,15 +771,15 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <param name="response">Response JSON.</param>
         /// <returns>JSON of credential definition.</returns>
         public static string ParseGetCredDefResponse(string response)
-        {            
-            var credDefResponseJson = JObject.Parse(response);
+        {
+            JObject credDefResponseJson = JObject.Parse(response);
 
-            var tag = credDefResponseJson["result"]["tag"];
-            var type = credDefResponseJson["result"]["signature_type"];
-            var origin = credDefResponseJson["result"]["origin"];
-            var ref_value = credDefResponseJson["result"]["ref"];
+            JToken tag = credDefResponseJson["result"]["tag"];
+            JToken type = credDefResponseJson["result"]["signature_type"];
+            JToken origin = credDefResponseJson["result"]["origin"];
+            JToken ref_value = credDefResponseJson["result"]["ref"];
 
-            var id = origin + ":" + "3" + ":" + type + ":" + ref_value + ":" + tag;
+            string id = origin + ":" + "3" + ":" + type + ":" + ref_value + ":" + tag;
 
             return JsonConvert.SerializeObject(new
             {
@@ -804,7 +803,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <returns>JSON of revocatopn registry definition.</returns>
         public static string ParseGetRevocRegDefResponseAsync(string response)
         {
-            var responseJson = JObject.Parse(response);
+            JObject responseJson = JObject.Parse(response);
 
             return JsonConvert.SerializeObject(new
             {
@@ -837,7 +836,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <returns>JSON of revocation registry.</returns>
         public static string ParseGetRevocRegResponseAsync(string response)
         {
-            var responseJson = JObject.Parse(response);
+            JObject responseJson = JObject.Parse(response);
 
             return JsonConvert.SerializeObject(new
             {
