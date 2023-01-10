@@ -22,7 +22,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             string genesisFile = Path.Combine(currentDirectory, @"..\..\..\Resources\genesis_builder");
             _genesisFilePath = Path.GetFullPath(genesisFile);
         }
-        [Test, TestCase(TestName = "BuildAcceptanceMechanismsRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildAcceptanceMechanismsRequestAsync() call returns request handle.")]
         public async Task BuildAcceptanceMechanismsRequestAsyncWorks()
         {
             //Arrange 
@@ -42,7 +42,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             _ = testObject.Should().NotBe(new IntPtr());
         }
-        [Test, TestCase(TestName = "BuildAcceptanceMechanismsRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildAcceptanceMechanismsRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildAcceptanceMechanismsRequestAsyncThrows()
         {
             //Arrange 
@@ -63,7 +63,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetAcceptanceMechanismsRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetAcceptanceMechanismsRequestAsync() call returns request handle.")]
         public async Task BuildGetAcceptanceMechanismsRequestAsyncWorks()
         {
             //Arrange 
@@ -77,7 +77,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetAcceptanceMechanismsRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetAcceptanceMechanismsRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetAcceptanceMechanismsRequestAsyncThrows()
         {
             //Arrange 
@@ -92,7 +92,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildAttributeRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildAttributeRequest() call returns request handle.")]
         public async Task BuildAttributeRequestWorks()
         {
             //Arrange 
@@ -111,7 +111,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildAttributeRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildAttributeRequest() call with invalid submitterDid length throws.")]
         public async Task BuildAttributeRequestThrows()
         {
             //Arrange 
@@ -127,7 +127,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetAttributeRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetAttributeRequest() call returns request handle.")]
         public async Task BuildGetAttributeRequestWorks()
         {
             //Arrange 
@@ -143,7 +143,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetAttributeRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetAttributeRequest() call with invalid submitterDid length throws.")]
         public async Task BuildGetAttributeRequestThrows()
         {
             //Arrange 
@@ -160,7 +160,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
 
 
-        [Test, TestCase(TestName = "BuildCredDefRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildCredDefRequest() call returns request handle.")]
         public async Task BuildCredDefRequestWorks()
         {
             //Arrange 
@@ -176,7 +176,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildCredDefRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildCredDefRequest() call with invalid submitterDid length throws.")]
         public async Task BuildCredDefRequestThrows()
         {
             //Arrange 
@@ -192,7 +192,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildCustomRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildCustomRequest() call returns request handle.")]
         public async Task BuildCustomRequestWorks()
         {
             //Arrange 
@@ -206,7 +206,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildCustomRequest call with invalid request JSON throws.")]
+        [Test, TestCase(TestName = "BuildCustomRequest() call with invalid request JSON throws.")]
         public async Task BuildCustomRequestThrows()
         {
             //Arrange 
@@ -220,7 +220,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildDisableAllTxnAuthorAgreementsRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildDisableAllTxnAuthorAgreementsRequest() call returns request handle.")]
         public async Task BuildDisableAllTxnAuthorAgreementsRequestWorks()
         {
             //Arrange 
@@ -234,7 +234,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildDisableAllTxnAuthorAgreementsRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildDisableAllTxnAuthorAgreementsRequest() call with invalid submitterDid length throws.")]
         public async Task BuildDisableAllTxnAuthorAgreementsRequestThrows()
         {
             //Arrange 
@@ -248,7 +248,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetCredDefRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetCredDefRequest() call returns request handle.")]
         public async Task BuildGetCredDefRequestWorks()
         {
             //Arrange 
@@ -264,7 +264,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetCredDefRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetCredDefRequest() call with invalid submitterDid length throws.")]
         public async Task BuildGetCredDefRequestThrows()
         {
             //Arrange 
@@ -280,7 +280,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetNymRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetNymRequest() call returns request handle.")]
         public async Task BuildGetNymRequestWorks()
         {
             //Arrange 
@@ -296,7 +296,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetNymRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetNymRequest() call with invalid submitterDid length throws.")]
         public async Task BuildGetNymRequestThrows()
         {
             //Arrange 
@@ -312,7 +312,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetRevocRegDefRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegDefRequest() call returns request handle.")]
         public async Task BuildGetRevocRegDefRequestWorks()
         {
             //Arrange 
@@ -328,7 +328,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetRevocRegDefRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegDefRequest() call with invalid submitterDid length throws.")]
         public async Task BuildGetRevocRegDefRequestThrows()
         {
             //Arrange 
@@ -344,7 +344,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetRevocRegRequest call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegRequest() call returns request handle.")]
         public async Task BuildGetRevocRegRequestWorks()
         {
             //Arrange 
@@ -362,7 +362,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetRevocRegRequest call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegRequest() call with invalid submitterDid length throws.")]
         public async Task BuildGetRevocRegRequestThrows()
         {
             //Arrange 
@@ -381,7 +381,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
 
 
-        [Test, TestCase(TestName = "BuildGetRevocRegDeltaRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegDeltaRequestAsync() call returns request handle.")]
         public async Task BuildGetRevocRegDeltaRequestAsyncWorks()
         {
             //Arrange
@@ -401,7 +401,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetRevocRegDeltaRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetRevocRegDeltaRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetRevocRegDeltaRequestAsyncThrows()
         {
             //Arrange
@@ -421,7 +421,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetSchemaRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetSchemaRequestAsync() call returns request handle.")]
         public async Task BuildGetSchemaRequestAsyncWorks()
         {
             //Arrange
@@ -437,7 +437,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetSchemaRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetSchemaRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetSchemaRequestAsyncThrows()
         {
             //Arrange
@@ -453,7 +453,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetTxnAuthorAgreementRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetTxnAuthorAgreementRequestAsync() call returns request handle.")]
         public async Task BuildGetTxnAuthorAgreementRequestAsyncWorks()
         {
             //Arrange
@@ -469,7 +469,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetTxnAuthorAgreementRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetTxnAuthorAgreementRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetTxnAuthorAgreementRequestAsyncThrows()
         {
             //Arrange
@@ -485,7 +485,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetTxnRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetTxnRequestAsync() call returns request handle.")]
         public async Task BuildGetTxnRequestAsyncWorks()
         {
             //Arrange
@@ -503,7 +503,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetTxnRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetTxnRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetTxnRequestAsyncThrows()
         {
             //Arrange
@@ -521,7 +521,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildGetValidatorInfoRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildGetValidatorInfoRequestAsync() call returns request handle.")]
         public async Task BuildGetValidatorInfoRequestAsyncWorks()
         {
             //Arrange
@@ -535,7 +535,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildGetValidatorInfoRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildGetValidatorInfoRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildGetValidatorInfoRequestAsyncThrows()
         {
             //Arrange
@@ -549,7 +549,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildNymRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildNymRequestAsync() call returns request handle.")]
         public async Task BuildNymRequestAsyncWorks()
         {
             //Arrange
@@ -571,7 +571,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildNymRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildNymRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildNymRequestAsyncThrows()
         {
             //Arrange
@@ -593,7 +593,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildRevocRegDefRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildRevocRegDefRequestAsync() call returns request handle.")]
         public async Task BuildRevocRegDefRequestAsyncWorks()
         {
             //Arrange
@@ -610,7 +610,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildRevocRegDefRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildRevocRegDefRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildRevocRegDefRequestAsyncThrows()
         {
             //Arrange
@@ -627,7 +627,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildRevocRegEntryRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildRevocRegEntryRequestAsync() call returns request handle.")]
         public async Task BuildRevocRegEntryRequestAsyncWorks()
         {
             //Arrange
@@ -648,7 +648,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildRevocRegEntryRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildRevocRegEntryRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildRevocRegEntryRequestAsyncThrows()
         {
             //Arrange
@@ -669,7 +669,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildSchemaRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildSchemaRequestAsync() call returns request handle.")]
         public async Task BuildSchemaRequestAsyncWorks()
         {
             //Arrange
@@ -686,7 +686,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildSchemaRequestAsync call with invalid submitterDid length throws.")]
+        [Test, TestCase(TestName = "BuildSchemaRequestAsync() call with invalid submitterDid length throws.")]
         public async Task BuildSchemaRequestAsyncThrows()
         {
             //Arrange
@@ -703,7 +703,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             await func.Should().ThrowAsync<IndyVdrException>();
         }
 
-        [Test, TestCase(TestName = "BuildTxnAuthorAgreementRequestAsync call returns request handle.")]
+        [Test, TestCase(TestName = "BuildTxnAuthorAgreementRequestAsync() call returns request handle.")]
         public async Task BuildTxnAuthorAgreementRequestAsyncWorks()
         {
             //Arrange
@@ -725,7 +725,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = testObject.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "BuildTxnAuthorAgreementRequestAsync call with invalid submitterDid throws.")]
+        [Test, TestCase(TestName = "BuildTxnAuthorAgreementRequestAsync() call with invalid submitterDid throws.")]
         public async Task BuildTxnAuthorAgreementRequestAsyncThrows()
         {
             //Arrange
@@ -748,7 +748,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
 
         #region Parse methods
-        [Test, TestCase(TestName = "ParseGetSchemaResponse takes a response JSON and parses it to a schema JSON.")]
+        [Test, TestCase(TestName = "ParseGetSchemaResponse() takes a response JSON and parses it to a schema JSON.")]
         public async Task ParseGetSchemaResponseWorks()
         {
             //Arrange
@@ -768,7 +768,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             id.Should().NotBeNullOrEmpty();
         }
 
-        [Test, TestCase(TestName = "ParseGetCredDefResponse takes a response JSON and parses it to a schema JSON.")]
+        [Test, TestCase(TestName = "ParseGetCredDefResponse() takes a response JSON and parses it to a schema JSON.")]
         public async Task ParseGetCredDefResponseWorks()
         {
             //Arrange
@@ -795,7 +795,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             z.Should().NotBeNullOrEmpty();
         }
 
-        [Test, TestCase(TestName = "ParseGetRevocRegDefResponse takes a response JSON and parses it to a schema JSON.")]
+        [Test, TestCase(TestName = "ParseGetRevocRegDefResponse() takes a response JSON and parses it to a schema JSON.")]
         public async Task ParseGetRevocRegDefResponseWorks()
         {
             //Arrange
@@ -825,7 +825,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             z.Should().NotBeNullOrEmpty();
         }
 
-        [Test, TestCase(TestName = "ParseGetRevocRegResponse takes a response JSON and parses it to a schema JSON.")]
+        [Test, TestCase(TestName = "ParseGetRevocRegResponse() takes a response JSON and parses it to a schema JSON.")]
         public async Task ParseGetRevocRegResponseWorks()
         {
             //Arrange

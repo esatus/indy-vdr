@@ -11,7 +11,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
     public class ModApiTests
     {
         #region Tests for GetVersion
-        [Test, TestCase(TestName = "GetVersionAsync returns a string that is not empty.")]
+        [Test, TestCase(TestName = "GetVersionAsync() returns a string that is not empty.")]
         public async Task GetVersion()
         {
             //Arrange
@@ -25,7 +25,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SetConfig
-        [Test, TestCase(TestName = "SetConfigAsync sets the pool config.")]
+        [Test, TestCase(TestName = "SetConfigAsync() sets the pool config.")]
         public async Task SetConfig()
         {
             //Arrange
@@ -49,7 +49,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = await ModApi.SetConfigAsync(JsonConvert.SerializeObject(new { }));
         }
 
-        [Test, TestCase(TestName = "SetConfigAsync call throws.")]
+        [Test, TestCase(TestName = "SetConfigAsync() call throws.")]
         public async Task SetConfigThrows()
         {
             //Arrange
@@ -65,7 +65,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SetDefaultLogger
-        [Test, TestCase(TestName = "SetDefaultLoggerAsync does not throw an exception.")]
+        [Test, TestCase(TestName = "SetDefaultLoggerAsync() does not throw an exception.")]
         public async Task SetDefaultLogger()
         {
             //Arrange
@@ -79,7 +79,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SetSocksProxy
-        [Test, TestCase(TestName = "SetSocksProxyAsync sets the socks proxy.")]
+        [Test, TestCase(TestName = "SetSocksProxyAsync() sets the socks proxy.")]
         public async Task SetSocksProxy()
         {
             //Arrange
@@ -95,7 +95,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SetProtocolVersion
-        [Test, TestCase(TestName = "SetProtocolVersionAsync sets the protocol version.")]
+        [Test, TestCase(TestName = "SetProtocolVersionAsync() sets the protocol version.")]
         public async Task SetProtocolVersion()
         {
             //Arrange

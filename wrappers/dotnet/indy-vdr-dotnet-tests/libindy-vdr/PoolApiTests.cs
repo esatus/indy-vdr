@@ -22,7 +22,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
 
         #region Tests for CreatePoolAsync
-        [Test, TestCase(TestName = "CreatePoolAsync call returns request handle.")]
+        [Test, TestCase(TestName = "CreatePoolAsync() call returns request handle.")]
         public async Task CreatePoolAsyncWorks()
         {
             //Arrange
@@ -34,7 +34,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = poolHandle.Should().NotBe(new IntPtr());
         }
 
-        [Test, TestCase(TestName = "CreatePoolAsync call throws.")]
+        [Test, TestCase(TestName = "CreatePoolAsync() call throws.")]
         public async Task CreatePoolAsyncThrows()
         {
             //Arrange
@@ -48,7 +48,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for RefreshPoolAsync
-        [Test, TestCase(TestName = "RefreshPoolAsync call returns a result bool.")]
+        [Test, TestCase(TestName = "RefreshPoolAsync() call returns a result bool.")]
         public async Task RefreshPoolAsyncWorks()
         {
             //Arrange
@@ -61,7 +61,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().Be(true);
         }
 
-        [Test, TestCase(TestName = "RefreshPoolAsync call throws.")]
+        [Test, TestCase(TestName = "RefreshPoolAsync() call throws.")]
         public async Task RefreshPoolAsyncThrows()
         {
             //Arrange
@@ -76,7 +76,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for GetPoolStatusAsync
-        [Test, TestCase(TestName = "GetPoolStatusAsync call returns a result string.")]
+        [Test, TestCase(TestName = "GetPoolStatusAsync() call returns a result string.")]
         public async Task GetPoolStatusAsyncWorks()
         {
             //Arrange
@@ -89,7 +89,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "GetPoolStatusAsync call throws.")]
+        [Test, TestCase(TestName = "GetPoolStatusAsync() call throws.")]
         public async Task GetPoolStatusAsyncThrows()
         {
             //Arrange
@@ -104,7 +104,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for GetPoolTransactionAsync
-        [Test, TestCase(TestName = "GetPoolTransactionsAsync call returns a result string.")]
+        [Test, TestCase(TestName = "GetPoolTransactionsAsync() call returns a result string.")]
         public async Task GetPoolTransactionsAsyncWorks()
         {
             //Arrange
@@ -117,7 +117,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "GetPoolTransactionsAsync call throws.")]
+        [Test, TestCase(TestName = "GetPoolTransactionsAsync() call throws.")]
         public async Task GetPoolTransactionsAsyncThrows()
         {
             //Arrange
@@ -132,7 +132,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for GetPoolVerifiersAsync
-        [Test, TestCase(TestName = "GetPoolVerifiersAsync call returns a result string.")]
+        [Test, TestCase(TestName = "GetPoolVerifiersAsync() call returns a result string.")]
         public async Task GetPoolVerifiersAsyncWorks()
         {
             //Arrange
@@ -145,7 +145,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "GetPoolVerifiersAsync call throws.")]
+        [Test, TestCase(TestName = "GetPoolVerifiersAsync() call throws.")]
         public async Task GetPoolVerifiersAsyncThrows()
         {
             //Arrange
@@ -160,7 +160,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SubmitPoolRequestAsync
-        [Test, TestCase(TestName = "SubmitPoolRequestAsync call returns a result string for GET_SCHEMA request.")]
+        [Test, TestCase(TestName = "SubmitPoolRequestAsync() call returns a result string for GET_SCHEMA request.")]
         public async Task SubmitPoolRequestAsyncWorks()
         {
             //Arrange
@@ -177,7 +177,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "SubmitPoolRequestAsync call returns a result string for GET_CRED_DEF request.")]
+        [Test, TestCase(TestName = "SubmitPoolRequestAsync() call returns a result string for GET_CRED_DEF request.")]
         public async Task SubmitPoolRequestAsyncWorksCredDef()
         {
             //Arrange
@@ -195,7 +195,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "SubmitPoolRequestAsync call returns a result string for GET_ATTRIB request.")]
+        [Test, TestCase(TestName = "SubmitPoolRequestAsync() call returns a result string for GET_ATTRIB request.")]
         public async Task SubmitPoolRequestAsyncWorksGetAttr()
         {
             //Arrange
@@ -212,7 +212,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "SubmitPoolRequestAsync call throws.")]
+        [Test, TestCase(TestName = "SubmitPoolRequestAsync() call throws.")]
         public async Task SubmitPoolRequestAsyncThrows()
         {
             //Arrange
@@ -228,7 +228,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for SubmitPoolActionAsync
-        [Test, TestCase(TestName = "SubmitPoolActionAsync call returns a result string.")]
+        [Test, TestCase(TestName = "SubmitPoolActionAsync() call returns a result string.")]
         public async Task SubmitPoolActionAsyncWorks()
         {
             //Arrange
@@ -243,7 +243,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().NotBe("");
         }
 
-        [Test, TestCase(TestName = "SubmitPoolActionAsync call throws.")]
+        [Test, TestCase(TestName = "SubmitPoolActionAsync() call throws.")]
         public async Task SubmitPoolActionAsyncThrows()
         {
             //Arrange
@@ -260,7 +260,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         #endregion
 
         #region Tests for ClosePoolAsync
-        [Test, TestCase(TestName = "ClosePoolAsync call returns errorcode 0.")]
+        [Test, TestCase(TestName = "ClosePoolAsync() call returns errorcode 0.")]
         public async Task ClosePoolAsyncWorks()
         {
             //Arrange
@@ -273,7 +273,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             _ = actual.Should().Be(0);
         }
 
-        [Test, TestCase(TestName = "ClosePoolAsync call throws.")]
+        [Test, TestCase(TestName = "ClosePoolAsync() call throws.")]
         public async Task ClosePoolAsyncThrows()
         {
             //Arrange
