@@ -7,13 +7,14 @@ namespace indy_vdr_dotnet.libindy_vdr
     public static class RequestApi
     {
         /// <summary>
-        /// Creates a new TAA from the provided parameters.
-        /// 
-        /// Either 'text' + 'version' or 'taa_digest' have to be passed (not both).
+        /// Creates a new TAA from the provided parameters.       
         /// </summary>
+        /// <remarks>
+        /// Either 'text' + 'version' or 'taa_digest' have to be passed (not both).
+        /// </remarks>
         /// <param name="accMechType">Mechanism type.</param>
         /// <param name="time">Unix timestamp</param>
-        /// <param name="text"></param>
+        /// <param name="text">TAA text.</param>
         /// <param name="version">TAA version.</param>
         /// <param name="taaDigest">TAA digest.</param>
         /// <exception cref="IndyVdrException">Throws if parameters or the combination of them are invalid.</exception>

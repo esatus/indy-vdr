@@ -14,7 +14,10 @@ namespace indy_vdr_dotnet.libindy_vdr
         /// <summary>
         /// Creates and initializes a new pool.
         /// </summary>
-        /// <param name="transactions"></param>
+        /// <remarks>
+        /// The <paramref name="transactionsPath"/> will be ignored if <paramref name="transactions"/> is given. Either <paramref name="transactions"/> or <paramref name="transactionsPath"/> must be set. 
+        /// </remarks>
+        /// <param name="transactions">Initial pool transactions.</param>
         /// <param name="transactionsPath">Path of genesis file.</param>
         /// <param name="nodeWeights">Initial node weights.</param>
         /// <exception cref="IndyVdrException">Throws if any parameter is invalid.</exception>
@@ -74,11 +77,10 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        /// 
+        /// Callback method for <see cref="RefreshPoolAsync(IntPtr)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
         private static void PoolRefreshCallbackMethod(long callbackId, int errorCode)
         {
             TaskCompletionSource<bool> taskCompletionSource = PendingCallbacks.Remove<bool>(callbackId);
@@ -123,12 +125,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        ///
+        /// Callback method for <see cref="GetPoolStatusAsync(IntPtr)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <param name="statusResult"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
+        /// <param name="statusResult">Received pool status from backend call.</param>
         private static void PoolGetStatusCallbackMethod(long callbackId, int errorCode, string statusResult)
         {
             TaskCompletionSource<string> taskCompletionSource = PendingCallbacks.Remove<string>(callbackId);
@@ -175,12 +176,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        /// 
+        /// Callback method for <see cref="GetPoolTransactionsAsync(IntPtr)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <param name="transactions"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
+        /// <param name="transactions">Received transactions from backend call.</param>
         private static void PoolGetTransactionsCallbackMethod(long callbackId, int errorCode, string transactions)
         {
             TaskCompletionSource<string> taskCompletionSource = PendingCallbacks.Remove<string>(callbackId);
@@ -224,12 +224,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        /// 
+        /// Callback method for <see cref="GetPoolVerifiersAsync(IntPtr)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <param name="verifiers"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
+        /// <param name="verifiers">Received verifiers from backend call.</param>
         private static void PoolGetVerifiersCallbackMethod(long callbackId, int errorCode, string verifiers)
         {
             TaskCompletionSource<string> taskCompletionSource = PendingCallbacks.Remove<string>(callbackId);
@@ -248,11 +247,12 @@ namespace indy_vdr_dotnet.libindy_vdr
         #region SubmitPoolAction
         /// <summary>
         /// Submit a pool action to all verifier nodes.
-        ///
+        /// </summary>
+        /// <remarks>
         /// The following requests are sent as actions:
         ///    <c>GET_VALIDATOR_INFO</c>,
         ///    <c>POOL_RESTART</c>
-        /// </summary>
+        /// </remarks>
         /// <param name="poolHandle">Handle of pool object.</param>
         /// <param name="requestHandle">Handle of the prepared request object.</param>
         /// <param name="nodeAliases">All nodes that are requested to perform the action.</param>
@@ -292,12 +292,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        /// 
+        /// Callback method for <see cref="SubmitPoolActionAsync(IntPtr, IntPtr, List{string}, int)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <param name="actionResult"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
+        /// <param name="actionResult">Received action result from backend call.</param>
         private static void PoolSubmitActionCallbackMethod(long callbackId, int errorCode, string actionResult)
         {
             TaskCompletionSource<string> taskCompletionSource = PendingCallbacks.Remove<string>(callbackId);
@@ -344,12 +343,11 @@ namespace indy_vdr_dotnet.libindy_vdr
         }
 
         /// <summary>
-        /// 
+        /// Callback method for <see cref="SubmitPoolRequestAsync(IntPtr, IntPtr)"/>.
         /// </summary>
-        /// <param name="callbackId"></param>
-        /// <param name="errorCode"></param>
-        /// <param name="requestResult"></param>
-        /// <exception cref="IndyVdrException"></exception>
+        /// <param name="callbackId">The callback id.</param>
+        /// <param name="errorCode">Value of the received <see cref="ErrorCode"/> from backend call.</param>
+        /// <param name="requestResult">Received request result from backend call.</param>
         private static void PoolSubmitRequestCallbackMethod(long callbackId, int errorCode, string requestResult)
         {
             TaskCompletionSource<string> taskCompletionSource = PendingCallbacks.Remove<string>(callbackId);
