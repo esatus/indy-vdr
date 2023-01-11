@@ -10,7 +10,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
 {
     public class ModApiTests
     {
-        #region Tests for GetVersion
+        #region Tests for GetVersionAsync
         [Test, TestCase(TestName = "GetVersionAsync() returns a string that is not empty.")]
         public async Task GetVersion()
         {
@@ -24,7 +24,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
         #endregion
 
-        #region Tests for SetConfig
+        #region Tests for SetConfigAsync
         [Test, TestCase(TestName = "SetConfigAsync() sets the pool config.")]
         public async Task SetConfig()
         {
@@ -64,7 +64,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
         #endregion
 
-        #region Tests for SetDefaultLogger
+        #region Tests for SetDefaultLoggerAsync
         [Test, TestCase(TestName = "SetDefaultLoggerAsync() does not throw an exception.")]
         public async Task SetDefaultLogger()
         {
@@ -78,7 +78,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
         #endregion
 
-        #region Tests for SetSocksProxy
+        #region Tests for SetSocksProxyAsync
         [Test, TestCase(TestName = "SetSocksProxyAsync() sets the socks proxy.")]
         public async Task SetSocksProxy()
         {
@@ -94,7 +94,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
         #endregion
 
-        #region Tests for SetProtocolVersion
+        #region Tests for SetProtocolVersionAsync
         [Test, TestCase(TestName = "SetProtocolVersionAsync() sets the protocol version.")]
         public async Task SetProtocolVersion()
         {

@@ -22,6 +22,8 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             string genesisFile = Path.Combine(currentDirectory, @"..\..\..\Resources\genesis_builder");
             _genesisFilePath = Path.GetFullPath(genesisFile);
         }
+
+        #region Tests for BuildAcceptanceMechanismsRequestAsync
         [Test, TestCase(TestName = "BuildAcceptanceMechanismsRequestAsync() call returns request handle.")]
         public async Task BuildAcceptanceMechanismsRequestAsyncWorks()
         {
@@ -91,7 +93,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildAttributeRequest
         [Test, TestCase(TestName = "BuildAttributeRequest() call returns request handle.")]
         public async Task BuildAttributeRequestWorks()
         {
@@ -158,8 +162,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
-
+        #region Tests for BuildCredDefRequest
         [Test, TestCase(TestName = "BuildCredDefRequest() call returns request handle.")]
         public async Task BuildCredDefRequestWorks()
         {
@@ -191,7 +196,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildCustomRequest
         [Test, TestCase(TestName = "BuildCustomRequest() call returns request handle.")]
         public async Task BuildCustomRequestWorks()
         {
@@ -219,7 +226,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildDisableAllTxnAuthroAgreementsRequest
         [Test, TestCase(TestName = "BuildDisableAllTxnAuthorAgreementsRequest() call returns request handle.")]
         public async Task BuildDisableAllTxnAuthorAgreementsRequestWorks()
         {
@@ -247,7 +256,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetCredDefRequest
         [Test, TestCase(TestName = "BuildGetCredDefRequest() call returns request handle.")]
         public async Task BuildGetCredDefRequestWorks()
         {
@@ -279,7 +290,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetNymRequest
         [Test, TestCase(TestName = "BuildGetNymRequest() call returns request handle.")]
         public async Task BuildGetNymRequestWorks()
         {
@@ -311,7 +324,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetRevocRregDefRequest
         [Test, TestCase(TestName = "BuildGetRevocRegDefRequest() call returns request handle.")]
         public async Task BuildGetRevocRegDefRequestWorks()
         {
@@ -343,7 +358,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetRevocRegRequest
         [Test, TestCase(TestName = "BuildGetRevocRegRequest() call returns request handle.")]
         public async Task BuildGetRevocRegRequestWorks()
         {
@@ -379,8 +396,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
-
+        #region Tests for BuildGetRevocRegDeltaRequestAsync
         [Test, TestCase(TestName = "BuildGetRevocRegDeltaRequestAsync() call returns request handle.")]
         public async Task BuildGetRevocRegDeltaRequestAsyncWorks()
         {
@@ -420,7 +438,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetSchemaRequestAsync
         [Test, TestCase(TestName = "BuildGetSchemaRequestAsync() call returns request handle.")]
         public async Task BuildGetSchemaRequestAsyncWorks()
         {
@@ -452,7 +472,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetTxnAuthorAgreementRequestAsync
         [Test, TestCase(TestName = "BuildGetTxnAuthorAgreementRequestAsync() call returns request handle.")]
         public async Task BuildGetTxnAuthorAgreementRequestAsyncWorks()
         {
@@ -484,7 +506,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetTxnRequestAsync
         [Test, TestCase(TestName = "BuildGetTxnRequestAsync() call returns request handle.")]
         public async Task BuildGetTxnRequestAsyncWorks()
         {
@@ -520,7 +544,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildGetValidatorInfoRequestAsync
         [Test, TestCase(TestName = "BuildGetValidatorInfoRequestAsync() call returns request handle.")]
         public async Task BuildGetValidatorInfoRequestAsyncWorks()
         {
@@ -548,7 +574,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildNymRequestAsync
         [Test, TestCase(TestName = "BuildNymRequestAsync() call returns request handle.")]
         public async Task BuildNymRequestAsyncWorks()
         {
@@ -592,7 +620,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildRevocRegDefRequestAsync
         [Test, TestCase(TestName = "BuildRevocRegDefRequestAsync() call returns request handle.")]
         public async Task BuildRevocRegDefRequestAsyncWorks()
         {
@@ -626,7 +656,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildRevocRegEntryRequestAsync
         [Test, TestCase(TestName = "BuildRevocRegEntryRequestAsync() call returns request handle.")]
         public async Task BuildRevocRegEntryRequestAsyncWorks()
         {
@@ -668,7 +700,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildSchemaAsync
         [Test, TestCase(TestName = "BuildSchemaRequestAsync() call returns request handle.")]
         public async Task BuildSchemaRequestAsyncWorks()
         {
@@ -702,7 +736,9 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
+        #region Tests for BuildTxnAuthorAgreementRequestAsync
         [Test, TestCase(TestName = "BuildTxnAuthorAgreementRequestAsync() call returns request handle.")]
         public async Task BuildTxnAuthorAgreementRequestAsyncWorks()
         {
@@ -746,6 +782,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
         }
+        #endregion
 
         #region Parse methods
         [Test, TestCase(TestName = "ParseGetSchemaResponse() takes a response JSON and parses it to a schema JSON.")]
