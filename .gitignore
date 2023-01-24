@@ -11,3 +11,5 @@ Podfile.lock
 coverage
 .vs
 *.tgz
+*.so
+.npmrc
