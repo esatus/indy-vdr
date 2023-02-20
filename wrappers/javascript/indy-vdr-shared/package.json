@@ -1,6 +1,6 @@
 {
   "name": "@hyperledger/indy-vdr-shared",
-  "version": "0.1.0-dev.2",
+  "version": "0.1.0-dev.9",
   "license": "Apache-2.0",
   "description": "Shared library for using Indy VDR with NodeJS and React Native",
   "main": "build/index",
@@ -28,6 +28,6 @@
     "@babel/runtime": "^7.17.9",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.5.5"
+    "typescript": "~4.9.4"
   }
 }
