@@ -150,5 +150,16 @@ namespace indy_vdr_dotnet.libindy_vdr
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int indy_vdr_request_set_txn_author_agreement_acceptance(IntPtr request_handle, FfiStr acceptance);
         #endregion
+
+
+        #region Resolve
+        [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int indy_vdr_resolve(IntPtr poolHandle, FfiStr did, ResolveCompletedDelegate cb, long time);
+        internal delegate void ResolveCompletedDelegate(long callback_id, int err, string response);
+
+        [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int indy_vdr_dereference(IntPtr poolHandle, FfiStr did, DereferenceCompletedDelegate cb, long time);
+        internal delegate void DereferenceCompletedDelegate(long callback_id, int err, string response);
+        #endregion
     }
 }
