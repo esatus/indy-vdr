@@ -21,7 +21,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_resolve(
-                await PoolApi.CreatePoolAsync(),
+                poolHandle,
                 FfiStr.Create(did),
                 ResolveCompletedCallback,
                 callbackId);
@@ -63,7 +63,7 @@ namespace indy_vdr_dotnet.libindy_vdr
             long callbackId = PendingCallbacks.Add(taskCompletionSource);
 
             int errorCode = NativeMethods.indy_vdr_dereference(
-                await PoolApi.CreatePoolAsync(),
+                poolHandle,
                 FfiStr.Create(did_url),
                 DereferenceCompletedCallback,
                 callbackId);

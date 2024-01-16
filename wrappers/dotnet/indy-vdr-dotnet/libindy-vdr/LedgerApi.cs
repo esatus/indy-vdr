@@ -142,7 +142,9 @@ namespace indy_vdr_dotnet.libindy_vdr
             string submitterDid = null,
             string raw = null,
             string hash = null,
-            string enc = null)
+            string enc = null,
+            int seqNo = -1,
+            long timestamp = 0)
         {
             IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_get_attrib_request(
@@ -151,6 +153,8 @@ namespace indy_vdr_dotnet.libindy_vdr
                 FfiStr.Create(raw),
                 FfiStr.Create(hash),
                 FfiStr.Create(enc),
+                seqNo,
+                timestamp,
                 ref requestHandle);
 
             if (errorCode != (int)ErrorCode.Success)
@@ -538,7 +542,9 @@ namespace indy_vdr_dotnet.libindy_vdr
             string dest,
             string verkey = null,
             string alias = null,
-            string role = null)
+            string role = null,
+            string diddoContent = null,
+            int version = 0)
         {
             IntPtr requestHandle = new IntPtr();
             int errorCode = NativeMethods.indy_vdr_build_nym_request(
@@ -547,6 +553,8 @@ namespace indy_vdr_dotnet.libindy_vdr
                 FfiStr.Create(verkey),
                 FfiStr.Create(alias),
                 FfiStr.Create(role),
+                FfiStr.Create(diddoContent),
+                version,
                 ref requestHandle);
 
             if (errorCode != (int)ErrorCode.Success)

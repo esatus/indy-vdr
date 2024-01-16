@@ -17,7 +17,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public void OneTimeSetUp()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string genesisFile = Path.Combine(currentDirectory, @"..\..\..\Resources\genesis_builder");
+            string genesisFile = Path.Combine(currentDirectory, @"Resources\genesis_builder");
             _genesisFilePath = Path.GetFullPath(genesisFile);
         }
 
@@ -203,7 +203,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             string testSubmitterDid = "LibindyDid111111111111";
             string testTargetDid = "LibindyDid111111111111";
 
-            IntPtr testRequestHandle = await LedgerApi.BuildGetAttributeRequest(testTargetDid, testSubmitterDid, "name", null, null);
+            IntPtr testRequestHandle = await LedgerApi.BuildGetAttributeRequest(testTargetDid, testSubmitterDid, "name", null, null,-1,-1);
             string debug = await RequestApi.RequestGetBodyAsync(testRequestHandle);
             //Act
             string actual = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
@@ -234,7 +234,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             //Arrange
             IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
             IntPtr testRequestHandle = await LedgerApi.BuildGetSchemaRequestAsync("9vBvpoNHmqiDu4pAUVVue7:2:Boarding Pass:1.0");
-            List<string> testNodes = new() { "xsvalidatorec2irl", "vnode1", "danube", "FoundationBuilder" };
+            List<string> testNodes = new() { "Node1", "Node2", "Node3", "Node4" };
 
             //Act
             string actual = await PoolApi.SubmitPoolActionAsync(testPoolHandle, testRequestHandle, testNodes);

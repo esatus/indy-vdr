@@ -22,7 +22,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         internal static extern int indy_vdr_build_attrib_request(FfiStr submitter_did, FfiStr target_did, FfiStr hash, FfiStr raw, FfiStr enc, ref IntPtr handle_p);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int indy_vdr_build_get_attrib_request(FfiStr submitter_did, FfiStr target_did, FfiStr raw, FfiStr hash, FfiStr enc, ref IntPtr handle_p);
+        internal static extern int indy_vdr_build_get_attrib_request(FfiStr submitter_did, FfiStr target_did, FfiStr raw, FfiStr hash, FfiStr enc, int seq_no, long timestamp, ref IntPtr handle_p);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int indy_vdr_build_cred_def_request(FfiStr submitter_did, FfiStr cred_def, ref IntPtr handle_p);
@@ -61,7 +61,7 @@ namespace indy_vdr_dotnet.libindy_vdr
         internal static extern int indy_vdr_build_get_validator_info_request(FfiStr submitter_did, ref IntPtr handle_p);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int indy_vdr_build_nym_request(FfiStr submitter_did, FfiStr dest, FfiStr verkey, FfiStr alias, FfiStr role, ref IntPtr handle_p);
+        internal static extern int indy_vdr_build_nym_request(FfiStr submitter_did, FfiStr dest, FfiStr verkey, FfiStr alias, FfiStr role, FfiStr diddoc_content, int version, ref IntPtr handle_p);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int indy_vdr_build_revoc_reg_def_request(FfiStr submitter_did, FfiStr revoc_reg_def, ref IntPtr handle_p);
@@ -151,14 +151,14 @@ namespace indy_vdr_dotnet.libindy_vdr
         internal static extern int indy_vdr_request_set_txn_author_agreement_acceptance(IntPtr request_handle, FfiStr acceptance);
         #endregion
 
-
+     
         #region Resolve
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int indy_vdr_resolve(IntPtr poolHandle, FfiStr did, ResolveCompletedDelegate cb, long time);
+        internal static extern int indy_vdr_resolve(IntPtr pool_handle, FfiStr did, ResolveCompletedDelegate callback, long callback_id);
         internal delegate void ResolveCompletedDelegate(long callback_id, int err, string response);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int indy_vdr_dereference(IntPtr poolHandle, FfiStr did, DereferenceCompletedDelegate cb, long time);
+        internal static extern int indy_vdr_dereference(IntPtr pool_handle, FfiStr did, DereferenceCompletedDelegate cb, long callback_id);
         internal delegate void DereferenceCompletedDelegate(long callback_id, int err, string response);
         #endregion
     }
