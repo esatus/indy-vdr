@@ -17,7 +17,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public void OneTimeSetUp()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string genesisFile = Path.Combine(currentDirectory, @"Resources\genesis_builder");
+            string genesisFile = Path.Combine(currentDirectory, @"..\..\..\Resources\genesis_builder");
             _genesisFilePath = Path.GetFullPath(genesisFile);
         }
 

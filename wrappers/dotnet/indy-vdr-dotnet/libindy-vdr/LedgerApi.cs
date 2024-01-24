@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Hyperledger.Indy.utils;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -789,6 +790,8 @@ namespace indy_vdr_dotnet.libindy_vdr
 
             string id = origin + ":" + "3" + ":" + type + ":" + ref_value + ":" + tag;
 
+            JToken data = credDefResponseJson["result"]["data"];
+
             return JsonConvert.SerializeObject(new
             {
                 ver = "1.0",
@@ -798,8 +801,8 @@ namespace indy_vdr_dotnet.libindy_vdr
                 tag,
                 value = new
                 {
-                    primary = credDefResponseJson["result"]["data"]["primary"],
-                    revocation = credDefResponseJson["result"]["data"]["revocation"]
+                    primary = (data.NodeHasChild()) ? data["primary"] : null,
+                    revocation = (data.NodeHasChild()) ? data["revocation"] : null
                 }
             });
         }

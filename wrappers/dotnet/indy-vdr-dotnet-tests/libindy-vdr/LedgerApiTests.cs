@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Hyperledger.Indy.utils;
 using indy_vdr_dotnet;
 using indy_vdr_dotnet.libindy_vdr;
 using Newtonsoft.Json;
@@ -825,7 +826,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
 
             string ver = resJObj["ver"].ToString();
             string id = resJObj["id"].ToString();
-            string z = JObject.Parse(res)["value"]["primary"]["z"].ToString();
+            string z = (JObject.Parse(res)["value"]["primary"].NodeHasChild()) ? JObject.Parse(res)["value"]["primary"]["z"].ToString() : null;
           
             ver.Should().NotBeNullOrEmpty();
             id.Should().NotBeNullOrEmpty();
