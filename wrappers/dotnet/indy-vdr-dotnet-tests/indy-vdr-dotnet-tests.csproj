@@ -11,10 +11,14 @@
 
   <ItemGroup>
     <None Remove="Resources\genesis_builder" />
+    <None Remove="Resources\pool_transactions_builder_genesis" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\genesis_builder">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pool_transactions_builder_genesis">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

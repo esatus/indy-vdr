@@ -15,6 +15,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
     public class LedgerApiTests
     {
         private string _genesisFilePath;
+        private string _builderNetFilePath;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -22,6 +23,8 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string genesisFile = Path.Combine(currentDirectory, @"..\..\..\Resources\genesis_builder");
             _genesisFilePath = Path.GetFullPath(genesisFile);
+            string builderFile = Path.Combine(currentDirectory, @"..\..\..\Resources\pool_transactions_builder_genesis");
+            _builderNetFilePath = Path.Combine(builderFile);
         }
 
         #region Tests for BuildAcceptanceMechanismsRequestAsync
@@ -790,7 +793,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public async Task ParseGetSchemaResponseWorks()
         {
             //Arrange
-            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
+            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _builderNetFilePath, null);
             IntPtr testRequestHandle = await LedgerApi.BuildGetSchemaRequestAsync("9vBvpoNHmqiDu4pAUVVue7:2:Boarding Pass:1.0");
             string response = await PoolApi.SubmitPoolRequestAsync(testPoolHandle, testRequestHandle);
             //Act
@@ -810,7 +813,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public async Task ParseGetCredDefResponseWorks()
         {
             //Arrange
-            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
+            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _builderNetFilePath, null);
             string testCredDefDid = "J8L3C8nBZxSRVu1DueRbJR:3:CL:52019:9491087";
             string testSubmitterDid = "LibindyDid111111111111";
 
@@ -837,7 +840,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public async Task ParseGetRevocRegDefResponseWorks()
         {
             //Arrange
-            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
+            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _builderNetFilePath, null);
             string testRevocRegId = "4o469o3tnHVKpcTUhK8T6Y:4:4o469o3tnHVKpcTUhK8T6Y:3:CL:53194:default:CL_ACCUM:e141ed22-65e4-4d2d-85bd-66729e9b97cc";
             string testSubmitterDid = "LibindyDid111111111111";
             IntPtr testRequestHandle = await LedgerApi.BuildGetRevocRegDefRequest(
@@ -867,7 +870,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public async Task ParseGetRevocRegResponseWorks()
         {
             //Arrange
-            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _genesisFilePath, null);
+            IntPtr testPoolHandle = await PoolApi.CreatePoolAsync(null, _builderNetFilePath, null);
             string testRevocRegId = "VH5KLUSKxFAuS9mbXQEJCK:4:VH5KLUSKxFAuS9mbXQEJCK:3:CL:53251:postMan-Shoes:CL_ACCUM:8d89d381-30a6-4185-9a76-018019f20ad5";
             long testTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
             string testSubmitterDid = "LibindyDid111111111111";
