@@ -74,6 +74,11 @@ namespace indy_vdr_dotnet.libindy_vdr
             return errorCode;
         }
 
+        /// <summary>
+        /// Set path to cache directory
+        /// </summary>
+        /// <param name="path">is a string that specify how to reach the directory</param>
+        /// <returns></returns>
         public static async Task<int> SetCacheDirectoryAsync(string path)
         {
             int errorCode = NativeMethods.indy_vdr_set_cache_directory(FfiStr.Create(path));
@@ -85,6 +90,13 @@ namespace indy_vdr_dotnet.libindy_vdr
             return errorCode;
         }
 
+        /// <summary>
+        /// Set pool ledger transactions cache
+        /// </summary>
+        /// <param name="capacity"></param>
+        /// <param name="expire_offset"></param>
+        /// <param name="path_opt"></param>
+        /// <returns></returns>
         public static async Task<int> SetLedgerTxnCacheAsync(int capacity, long expire_offset, string path_opt)
         {
             int errorCode = NativeMethods.indy_vdr_set_ledger_txn_cache(capacity, expire_offset, FfiStr.Create(path_opt));

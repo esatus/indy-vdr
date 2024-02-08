@@ -4,8 +4,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Threading.Tasks;
 using static indy_vdr_dotnet.models.Structures;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace indy_vdr_dotnet.libindy_vdr
 {
@@ -733,6 +735,35 @@ namespace indy_vdr_dotnet.libindy_vdr
                 FfiStr.Create(version),
                 ratificationTs,
                 retirementTs,
+                ref requestHandle);
+
+            if (errorCode != (int)ErrorCode.Success)
+            {
+                string error = await ErrorApi.GetCurrentErrorAsync();
+                throw IndyVdrException.FromSdkError(error);
+            }
+
+            return requestHandle;
+        }
+
+        public static async Task<IntPtr> BuildRichSchemaRequestAsync(
+            string submitterDid,
+            string rsId,
+            string rsContent,
+            string rsName,
+            string rsVersion,
+            string rsType,
+            string ver)
+        {
+            IntPtr requestHandle = new IntPtr();
+            int errorCode = NativeMethods.indy_vdr_build_rich_schema_request(
+                FfiStr.Create(submitterDid),
+                FfiStr.Create(rsId),
+                FfiStr.Create(rsContent),
+                FfiStr.Create(rsName),
+                FfiStr.Create(rsVersion),
+                FfiStr.Create(rsType),
+                FfiStr.Create(ver),
                 ref requestHandle);
 
             if (errorCode != (int)ErrorCode.Success)

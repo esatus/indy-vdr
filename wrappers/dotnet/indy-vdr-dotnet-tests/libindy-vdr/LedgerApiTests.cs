@@ -788,6 +788,33 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         }
         #endregion
 
+        #region Tests for BuildRichSchemaRequestAsync
+        [Test, TestCase(TestName = "BuildRichSchemaRequestAsync() call returns request handle.")]
+        public async Task BuildRichSchemaRequestAsyncAsyncWorks()
+        {
+            //Arrange
+            string testSubmitterDid = "LibindyDid111111111111";
+            string testRsId = "Text";
+            string testRsContent ="Text";
+            string testRsName = "Text";
+            string testRsVersion = "1.0";
+            string testRsType = "1.0";
+            string testVer = "1.0";
+
+            //Act
+            IntPtr testObject = await LedgerApi.BuildRichSchemaRequestAsync(
+                testSubmitterDid,
+                testRsId,
+                testRsContent,
+                testRsName,
+                testRsVersion,
+                testRsType,
+                testVer);
+
+            //Assert
+            _ = testObject.Should().NotBe(new IntPtr());
+        }
+        #endregion
         #region Parse methods
         [Test, TestCase(TestName = "ParseGetSchemaResponse() takes a response JSON and parses it to a schema JSON.")]
         public async Task ParseGetSchemaResponseWorks()

@@ -134,11 +134,8 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         [Test, TestCase(TestName = "SetCacheDirectoryAsync() call throws.")]
         public async Task SetCacheDirectoryAsyncThrows()
         {
-            //Arrange
-            _cacheDirPath = null;
-
             //Act
-            Func<Task> func = async () => await ModApi.SetCacheDirectoryAsync(_cacheDirPath);
+            Func<Task> func = async () => await ModApi.SetCacheDirectoryAsync(null);
 
             //Assert
             await func.Should().ThrowAsync<IndyVdrException>();
@@ -150,7 +147,7 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
         public async Task SetLedgerTxnCacheAsyncWorks()
         {
             //Act                       
-            int errorCode = await ModApi.SetLedgerTxnCacheAsync(0, 0, null);
+            int errorCode = await ModApi.SetLedgerTxnCacheAsync(2, 3, _cacheDirPath);
 
             //Assert
             errorCode.Should().Be(0);
