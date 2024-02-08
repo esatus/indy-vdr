@@ -4,12 +4,24 @@ using indy_vdr_dotnet.libindy_vdr;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace indy_vdr_dotnet_tests.libindy_vdr
 {
     public class ModApiTests
     {
+
+        private string _cacheDirPath;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string cacheDir = Path.Combine(currentDirectory, @"..\..\..\Cache");
+            _cacheDirPath = Path.GetFullPath(cacheDir);
+        }
+
         #region Tests for GetVersionAsync
         [Test, TestCase(TestName = "GetVersionAsync() returns a string that is not empty.")]
         public async Task GetVersion()
@@ -102,6 +114,43 @@ namespace indy_vdr_dotnet_tests.libindy_vdr
 
             //Act                       
             int errorCode = await ModApi.SetProtocolVersionAsync(2);
+
+            //Assert
+            errorCode.Should().Be(0);
+        }
+        #endregion
+
+        #region Tests for SetCacheDirectoryAsync
+        [Test, TestCase(TestName = "SetCacheDirectoryAsync() sets the path to cache directorry.")]
+        public async Task SetCacheDirectoryAsyncWorks()
+        {
+            //Act                       
+            int errorCode = await ModApi.SetCacheDirectoryAsync(_cacheDirPath);
+
+            //Assert
+            errorCode.Should().Be(0);
+        }
+
+        [Test, TestCase(TestName = "SetCacheDirectoryAsync() call throws.")]
+        public async Task SetCacheDirectoryAsyncThrows()
+        {
+            //Arrange
+            _cacheDirPath = null;
+
+            //Act
+            Func<Task> func = async () => await ModApi.SetCacheDirectoryAsync(_cacheDirPath);
+
+            //Assert
+            await func.Should().ThrowAsync<IndyVdrException>();
+        }
+        #endregion
+
+        #region Tests for SetLedgerTxnCacheAsync
+        [Test, TestCase(TestName = "SetLedgerTxnCacheAsync() sets the path to cache directorry.")]
+        public async Task SetLedgerTxnCacheAsyncWorks()
+        {
+            //Act                       
+            int errorCode = await ModApi.SetLedgerTxnCacheAsync(0, 0, null);
 
             //Assert
             errorCode.Should().Be(0);

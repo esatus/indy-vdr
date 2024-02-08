@@ -81,6 +81,12 @@ namespace indy_vdr_dotnet.libindy_vdr
         internal static extern int indy_vdr_set_config(FfiStr config);
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int indy_vdr_set_cache_directory(FfiStr path);
+
+        [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int indy_vdr_set_ledger_txn_cache(int capacity, long expire_offset, FfiStr path_opt);
+
+        [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int indy_vdr_set_default_logger();
 
         [DllImport(Consts.LIBINDY_VDR_NAME, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]

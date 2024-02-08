@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using static indy_vdr_dotnet.models.Structures;
 
@@ -73,6 +74,27 @@ namespace indy_vdr_dotnet.libindy_vdr
             return errorCode;
         }
 
+        public static async Task<int> SetCacheDirectoryAsync(string path)
+        {
+            int errorCode = NativeMethods.indy_vdr_set_cache_directory(FfiStr.Create(path));
+            if (errorCode != (int)ErrorCode.Success)
+            {
+                string error = await ErrorApi.GetCurrentErrorAsync();
+                throw IndyVdrException.FromSdkError(error);
+            }
+            return errorCode;
+        }
+
+        public static async Task<int> SetLedgerTxnCacheAsync(int capacity, long expire_offset, string path_opt)
+        {
+            int errorCode = NativeMethods.indy_vdr_set_ledger_txn_cache(capacity, expire_offset, FfiStr.Create(path_opt));
+            if (errorCode != (int)ErrorCode.Success)
+            {
+                string error = await ErrorApi.GetCurrentErrorAsync();
+                throw IndyVdrException.FromSdkError(error);
+            }
+            return errorCode;
+        }
         /// <summary>
         /// Sets the socks proxy address used by pool.
         /// </summary>
